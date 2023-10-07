@@ -3,22 +3,34 @@
 
     let steps = [
         {
-            name: "Smoljames Store",
-            icon: "fa-solid fa-cart-shopping",
+            name: "OpticHub Workers App",
+            icon: "fa bg-white fa-glasses",
             description:
-                "Smoljames Store is a a merchanising store created with Next.js, Commerce.js & Stripe! Commerce.js is a CMS for managing project and Stripe is used for all transaction handling.",
+                "",
         },
         {
-            name: "Utlimate Todos",
-            icon: "fa-solid fa-list-check",
+            name: "EnergyP2P",
+            icon: "fa fa-bolt",
             description:
-                "Test for model robustness with customized test profiles and receive exhaustive reporting on the performance and potential vulnerabilities of your model.",
+                "",
         },
         {
-            name: "Pokédex",
-            icon: "fa-solid fa-diagram-project",
+            name: "Crop Yield Prediction",
+            icon: "fa bg-white fa-diagram-project",
             description:
-                "Augment your datasets with our filters and dataset manipulations to ensure your models are trained on the highest quality datasets (coming soon).",
+                "",
+        },
+        {
+            name: "legal Document Assistant",
+            icon: "fa bg-white fa-file-signature",
+            description:
+                "",
+        },
+        {
+            name: "Church Members Organiser",
+            icon: "fa bg-white fa-church",
+            description:
+                "",
         },
     ];
 
@@ -51,7 +63,7 @@
             class="flex flex-col lg:justify-center text-center lg:text-left gap-6 md:gap-8 lg:gap-10"
         >
             <h2 class="font-semibold text-4xl sm:text-5xl md:text-6xl">
-                Hi! I'm <span class="poppins text-violet-400">M A Allen Febi</span>
+                Hi! I'm <span class="poppins text-violet-400">M A Allen </span>Febi
                 <br />Full Stack
                 <span class="poppins text-violet-400">Developer</span>
             </h2>
@@ -64,7 +76,7 @@
                 class="blueShadow mx-auto lg:mr-auto lg:ml-0 text-base sm:text-lg md:text-xl poppins relative overflow-hidden px-6 py-3 group rounded-full bg-violet-400 text-slate-950"
             >
                 <div
-                    class="absolute top-0 right-full w-full h-full bg-white-400 opacity-20 group-hover:translate-x-full z-0 duration-200"
+                    class="absolute top-0 right-full w-full h-full bg-white opacity-20 group-hover:translate-x-full z-0 duration-200"
                 />
                 <h4 class="relative z-9">Get in touch &rarr;</h4>
             </button>
@@ -107,15 +119,15 @@
             class="mx-auto px-4 py-2 rounded-md border border-solid border-black flex items-center gap-2 -mb-4 sm:-mb-0 -mt-10 hover:border-violet-700 duration-200"
         >
             <i class="fa-regular fa-circle-play" />
-            <p>Watch the video</p>
+            <p>Feel Free To Explore</p>
         </a>
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-10">
             <Step step={steps[0]}>
                 <p>
-                    Smoljames Store is a a merchanising store created with <strong
+                    OpticHub Workers App is a developed to assist workers and the admin<strong
                         class="text-violet-400"
-                        >Next.js, Commerce.js, Stripe & Node.js + Express.js!</strong
-                    > Commerce.js is a product CMS and Stripe is used for all transaction
+                        >Flutter, Dart, FireBase, & MaterialUI!</strong
+                    > provider is a router handler and OpenLocation API is used for all geolocation
                     handling.
                 </p>
             </Step>
@@ -132,6 +144,30 @@
                 </p>
             </Step>
             <Step step={steps[2]}>
+                <p>
+                    The Pokédex is a <strong class="text-violet-400"
+                        >SvelteKit & TailwindCSS</strong
+                    >
+                    web application, hosted on
+                    <strong class="text-violet-400">Netlify</strong>, that
+                    consumes and caches the
+                    <strong class="text-violet-400">Pokémon API</strong>
+                    to display all Pokémon information. Gotta catch them all!
+                </p>
+            </Step>
+            <Step step={steps[3]}>
+                <p>
+                    The Pokédex is a <strong class="text-violet-400"
+                        >SvelteKit & TailwindCSS</strong
+                    >
+                    web application, hosted on
+                    <strong class="text-violet-400">Netlify</strong>, that
+                    consumes and caches the
+                    <strong class="text-violet-400">Pokémon API</strong>
+                    to display all Pokémon information. Gotta catch them all!
+                </p>
+            </Step>
+            <Step step={steps[4]}>
                 <p>
                     The Pokédex is a <strong class="text-violet-400"
                         >SvelteKit & TailwindCSS</strong

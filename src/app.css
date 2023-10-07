@@ -17,3 +17,10 @@ h3,
 .poppins {
     font-family: 'Poppins', sans-serif;
 }
+
+.whiteiconcolor {color:white;}
+
+.grid {
+    gap: 10px;
+    background-color: white;
+  }
