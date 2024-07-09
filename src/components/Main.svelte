@@ -3,50 +3,71 @@
 
   let steps = [
     {
+      name: "Natural Disaster and Escalation Management",
+      icon: "fa fa-tornado",
+      description: "",
+      href: "https://github.com/all3n2601/Natural-Disaster-Escalation-and-Administration-Framework",
+    },
+    {
       name: "EnergyP2P",
       icon: "fa fa-bolt",
       description: "",
+      href: "",
     },
     {
-      name: "Crop Yield Prediction",
-      icon: "fa bg-white fa-diagram-project",
+      name: "NavX",
+      icon: "fa bg-white fa-car",
       description: "",
+      href: "https://github.com/all3n2601/NavX-CodeHunt",
     },
     {
       name: "legal Document Assistant",
       icon: "fa bg-white fa-file-signature",
       description: "",
+      href: "https://github.com/all3n2601/Legal-Assistant-LLM-Model",
+    },
+    {
+      name: "Smart Helmet for Miners",
+      icon: "fa fa-medkit",
+      description: "",
+      href: "https://github.com/all3n2601/Smart-Helmet-For-Miners-Using-Arduino",
     },
     {
       name: "Riders Paradise",
       icon: "fa bg-white fa-motorcycle",
       description: "",
+      href: "https://github.com/all3n2601/Riders-Paradise",
     },
     {
       name: "Hospital Management System",
       icon: "fa bg-white fa-hospital",
       description: "",
+      href: "https://github.com/all3n2601/Hospital-Management-System-MERN-Stack",
     },
   ];
 
   let benefits = [
-    {
-      metric: "10x",
-      name: "a self taught developer",
-      description:
-        "I taught myself to code using free online resources and absolutely fell in love with the creativity and problem solving that is involved in developing and engineering innovative new online experiences. Starting of with JavaScript, HTML & CSS and evolving my knowledge base to include JavaScript frameworks, backend programming, design, cloud services and much much more.",
-    },
-    {
-      name: "a product design & UX finatic",
-      description:
-        "Carefully crafting and designing amazing user experiences allows me to express and experiment with every morsel of creativity I have. I love the challenge of learning new design concepts and enabling users with amazing online experiences.",
-    },
-    {
-      name: "an excellent communicator",
-      description:
-        "Communication is key and it's a paramount value of mine. I believe in transparency and constructive communication above all else. This helps me develop deep relationships and ensures my effectiveness and productivity in any work space with any team.",
-    },
-  ];
+  {
+    name: "a self-driven developer",
+    description: 
+      "I have taken the initiative to learn coding through university resources and free online materials, developing a passion for the creativity and problem-solving involved in creating innovative online experiences. Starting with JavaScript, HTML & CSS, I have expanded my knowledge to include various JavaScript frameworks, backend programming, design, cloud services, and much more.",
+  },
+  {
+    name: "an excellent problem solver",
+    description: 
+      "I excel at solving complex problems, approaching challenges with creativity and analytical thinking. This skill allows me to develop effective and efficient solutions, enhancing the quality and functionality of the projects I work on.",
+  },
+  {
+    name: "a quick learner",
+    description: 
+      "I have a strong ability to quickly grasp new concepts and technologies. This adaptability enables me to stay current with industry trends and continuously improve my skill set, making me a valuable asset to any team.",
+  },
+  {
+    name: "a quick communicator",
+    description: 
+      "Effective and prompt communication is one of my key strengths. I value transparency and constructive dialogue, which help me build strong relationships and ensure my productivity in any collaborative environment.",
+  },
+];
 </script>
 
 <main class="flex flex-col flex-1 p-4">
@@ -107,73 +128,79 @@
         Curious to <span class="poppins text-violet-400">see</span> my work?
       </h3>
     </div>
-    <a
-      href="#"
-      target="_blank"
-      class="mx-auto px-4 py-2 rounded-md border border-solid border-black flex items-center gap-2 -mb-4 sm:-mb-0 -mt-10 hover:border-violet-700 duration-200"
-    >
-      <i class="fa-regular fa-circle-play" />
-      <p>Feel Free To Explore</p>
-    </a>
+
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-10">
       <Step step={steps[0]}>
         <p>
-          OpticHub Workers App is a developed to assist workers and the admin <strong
-            class="text-violet-400"
-            >Flutter, Dart, FireBase, & MaterialUI!</strong
-          > provider is a router handler and OpenLocation API is used for all geolocation
-          handling.
+          Utilizes LORAWAN for communication during Disaster Times and provide
+          Administration for Escalation.<strong class="text-violet-400">
+            React.js, Node, Arduino C, & MongoDB
+          </strong>
+          Uses Socket for communication and MongoDB as storage cluster.
         </p>
       </Step>
       <Step step={steps[1]}>
         <p>
-          Ultimate Todos is a Full Stack <strong class="text-violet-400"
-            >Next.js</strong
-          >,
-          <strong class="text-violet-400">Node.js + Express.js</strong>
-          & <strong class="text-violet-400">Firebase</strong> CRUD application that
-          allows a user to login, manage a tidy and efficacious todo list, and persist
-          this information across devices.
+          Android application to manage peer to peer renewable energy transfer.
+          <strong class="text-violet-400">Flutter, Dart </strong>
+          & <strong class="text-violet-400">Firebase</strong>
+          Uses Firestore for data storage and Matchmaking Algorithm to provide efficient
+          matches during energy transfers.
         </p>
       </Step>
       <Step step={steps[2]}>
         <p>
-          The Pokédex is a <strong class="text-violet-400"
-            >SvelteKit & TailwindCSS</strong
-          >
-          web application, hosted on
-          <strong class="text-violet-400">Netlify</strong>, that consumes and
-          caches the
-          <strong class="text-violet-400">Pokémon API</strong>
-          to display all Pokémon information. Gotta catch them all!
+          The NavX is a <strong class="text-violet-400">MERN based</strong>
+          web application,to provide car and bike pooling with enhanced women safety
+          measures.
+          <strong class="text-violet-400">Redux</strong>
+          used to manage state and
+          <strong class="text-violet-400">TailwindCSS</strong> for Responsiveness.
+          🥈Recieved 2nd Prize at a 24 Hour Hackathon.
         </p>
       </Step>
       <Step step={steps[3]}>
         <p>
-          The Pokédex is a <strong class="text-violet-400"
-            >SvelteKit & TailwindCSS</strong
-          >
-          web application, hosted on
-          <strong class="text-violet-400">Netlify</strong>, that consumes and
-          caches the
-          <strong class="text-violet-400">Pokémon API</strong>
-          to display all Pokémon information. Gotta catch them all!
+          LLM powered legal assistant to help individuals and small buisnesses
+          in legal work.
+          <strong class="text-violet-400"
+            >LangChain, HuggingFace, ChainLit</strong
+          > to develop a standalone application to provide legal advice, model trained
+          with actual legal documents from Indian Government
         </p>
       </Step>
 
       <Step step={steps[4]}>
         <p>
-          The Pokédex is a <strong class="text-violet-400"
-            >SvelteKit & TailwindCSS</strong
-          >
-          web application, hosted on
-          <strong class="text-violet-400">Netlify</strong>, that consumes and
-          caches the
-          <strong class="text-violet-400">Pokémon API</strong>
-          to display all Pokémon information. Gotta catch them all!
+          The Smart Helmet for Miners equipped with Sensors connected to
+          Arduino, transferred to BLYNK Backend using LORAWAN to transfer
+          packets.
+          <strong class="text-violet-400">Arduino C, Blynk IOT</strong>
+          Multiple Arduino's handle data between the miner and Base, reading based
+          Emergency Protocols. Patent Issued by IPA.
         </p>
       </Step>
-      \
+
+      <Step step={steps[5]}>
+        <p>
+          Riders Paradise - your ultimate destination for everything
+          two-wheeled! MERN Bike Showroom
+          <strong class="text-violet-400"
+            >MERN, React Three, Redux, TailwindCSS</strong
+          >
+          3D Model using drei, redux for state management and MongoDB as data bucket.
+        </p>
+      </Step>
+
+      <Step step={steps[6]}>
+        <p>
+          This Hospital Management System is a web application developed using
+          <strong class="text-violet-400">MERN, Framer, Redux, TailwindCSS</strong> 
+          with Redux for state management and TailwindCSS for responsive
+          UI design. The system aims to streamline hospital operations, improve patient
+          care, and enhance overall efficiency.
+        </p>
+      </Step>
     </div>
   </section>
   <section
@@ -225,9 +252,6 @@
       {/each}
     </div>
 
-    <div class="mx-auto -mt-12 italic sm:hidden opacity-50">
-      <p>Scroll to see more &rarr;</p>
-    </div>
-    <p class="mx-auto">So why not invest?</p>
+    <p class="mx-auto">So Still Looking for Ways to Invest If Not :)</p>
   </section>
 </main>
