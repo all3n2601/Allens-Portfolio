@@ -10,14 +10,20 @@
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
   },
-  "keywords": ["portfolio", "svelte", "sveltekit", "3d", "modern"],
+  "keywords": [
+    "portfolio",
+    "svelte",
+    "sveltekit",
+    "3d",
+    "modern"
+  ],
   "author": "M A Allen Febi",
   "license": "MIT",
   "engines": {
-    "node": "22.x"
+    "node": ">=20.x"
   },
   "dependencies": {
-    "@sveltejs/adapter-auto": "^3.3.1",
+    "@sveltejs/adapter-vercel": "^5.10.3",
     "@sveltejs/kit": "^2.46.4",
     "@sveltejs/vite-plugin-svelte": "^6.2.1",
     "@threlte/core": "^8.1.7",

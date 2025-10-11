@@ -1,6 +1,11 @@
 {
   "buildCommand": "npm run build",
   "framework": "sveltekit",
-  "installCommand": "npm install"
+  "installCommand": "npm install",
+  "build": {
+    "env": {
+      "NODE_VERSION": "20"
+    }
+  }
 }
 
