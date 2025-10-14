@@ -7,11 +7,6 @@
     "env": {
       "NODE_VERSION": "20"
     }
-  },
-  "functions": {
-    "src/routes/**": {
-      "runtime": "nodejs20.x"
-    }
   }
 }
 
