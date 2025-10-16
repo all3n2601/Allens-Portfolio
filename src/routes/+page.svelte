@@ -327,7 +327,7 @@
           <h4 class="relative">Get in touch &rarr;</h4>
         </a>
         <a
-          href="/resume.pdf"
+          href="/documents/resume.pdf"
           download
           class="text-base sm:text-lg md:text-xl poppins relative px-6 py-3 rounded-full bg-transparent border-2 border-violet-400 text-violet-400 hover:bg-violet-400 hover:text-slate-950 transition-all duration-300 inline-block transform hover:scale-105"
         >
