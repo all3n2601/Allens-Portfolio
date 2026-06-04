@@ -1,11 +1,12 @@
-import adapter from '@sveltejs/adapter-vercel';
+import adapter from '@sveltejs/adapter-static';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
   kit: {
     adapter: adapter({
-      runtime: 'nodejs20.x',
-      external: ['three', '@threlte/core', '@threlte/extras']
+      pages: 'build',
+      assets: 'build',
+      strict: true
     })
   }
 };
