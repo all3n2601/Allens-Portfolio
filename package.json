@@ -20,7 +20,7 @@
   "author": "M A Allen Febi",
   "license": "MIT",
   "engines": {
-    "node": ">=20.x"
+    "node": ">=22.x"
   },
   "dependencies": {
     "@threlte/core": "^8.1.7",
@@ -29,7 +29,6 @@
   },
   "devDependencies": {
     "@sveltejs/adapter-static": "^3.0.10",
-    "wrangler": "^4.98.0",
     "@sveltejs/kit": "^2.46.4",
     "@sveltejs/vite-plugin-svelte": "^6.2.1",
     "@types/three": "^0.180.0",
