@@ -9,6 +9,9 @@ concurrency:
   group: cloudflare-pages
   cancel-in-progress: true
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -23,12 +26,37 @@ jobs:
           node-version: 22
           cache: npm
 
+      - name: Verify Cloudflare secrets
+        env:
+          CF_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          missing=0
+          if [ -z "$CF_API_TOKEN" ]; then
+            echo "::error::CLOUDFLARE_API_TOKEN is not set in GitHub repo secrets."
+            missing=1
+          fi
+          if [ -z "$CF_ACCOUNT_ID" ]; then
+            echo "::error::CLOUDFLARE_ACCOUNT_ID is not set in GitHub repo secrets."
+            missing=1
+          fi
+          if [ "$missing" -eq 1 ]; then
+            echo ""
+            echo "Add both secrets at: Settings → Secrets and variables → Actions"
+            echo "1. CLOUDFLARE_API_TOKEN — create at https://dash.cloudflare.com/profile/api-tokens"
+            echo "   Use the 'Edit Cloudflare Workers' template (includes Pages access)."
+            echo "2. CLOUDFLARE_ACCOUNT_ID — copy from Cloudflare dashboard sidebar (Account ID)."
+            exit 1
+          fi
+
       - run: npm ci
       - run: npm run build
 
       - name: Publish to Cloudflare Pages
-        uses: cloudflare/wrangler-action@v3
+        uses: cloudflare/pages-action@v1
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy build --project-name=shippedbyallen-portfolio --branch=main
+          projectName: shippedbyallen-portfolio
+          directory: build
+          branch: main
