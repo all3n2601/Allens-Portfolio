@@ -5,6 +5,7 @@
   import { shippedApps } from '$lib/data/shipped-apps';
   import { skillSections } from '$lib/data/skills';
   import { education, experiences, honors } from '$lib/data/resume';
+  import BrandMark from '$lib/components/BrandMark.svelte';
 
   const heroStats = [
     { num: '3+', label: 'Years Building' },
@@ -69,7 +70,13 @@
 
 <!-- NAV -->
 <nav>
-  <a class="nav-wordmark" href="#hero">Shipped by {site.firstName}</a>
+  <a class="nav-brand" href="#hero">
+    <BrandMark size={36} />
+    <span class="nav-brand-text">
+      <span class="nav-brand-shipped">{site.brandShort}</span>
+      <span class="nav-brand-by">{site.monogram} · {site.brandByline}</span>
+    </span>
+  </a>
   <ul class="nav-links">
     <li><a href="#apps">Apps</a></li>
     <li><a href="#about">About</a></li>
@@ -84,7 +91,10 @@
 <!-- HERO -->
 <section id="hero">
   <div class="hero-left">
-    <p class="hero-label">{site.role} · {site.location}</p>
+    <div class="hero-mark reveal">
+      <BrandMark size={52} variant="full" />
+    </div>
+    <p class="hero-label">{site.monogram} · {site.brandName} · {site.role}</p>
     <h1 class="hero-name">
       {site.firstName}<br />
       <em>{site.lastName}.</em>
@@ -466,7 +476,10 @@
 </section>
 
 <footer>
-  <span class="footer-sig">{site.fullName}</span>
+  <div class="footer-brand-lockup">
+    <BrandMark size={28} />
+    <span class="footer-sig">{site.brandName}</span>
+  </div>
   <span class="footer-note">{site.location} · © 2026</span>
 </footer>
 
@@ -484,6 +497,38 @@
     align-items: center;
     justify-content: space-between;
     padding: 1rem 2.5rem;
+  }
+
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .nav-brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.05;
+  }
+
+  .nav-brand-shipped {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+
+  .nav-brand-by {
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink3);
+    margin-top: 0.15rem;
   }
 
   .nav-wordmark {
@@ -594,6 +639,11 @@
     letter-spacing: 0.2em;
     text-transform: uppercase;
     margin-bottom: 1.5rem;
+  }
+
+  .hero-mark {
+    margin-bottom: 1.75rem;
+    width: fit-content;
   }
 
   .hero-name {
@@ -1622,11 +1672,17 @@
     border-top: 1px solid rgba(245, 242, 235, 0.08);
   }
 
+  .footer-brand-lockup {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+  }
+
   .footer-sig {
     font-family: var(--serif);
     font-style: italic;
     font-size: 1rem;
-    color: rgba(245, 242, 235, 0.3);
+    color: rgba(245, 242, 235, 0.45);
   }
 
   .footer-note {

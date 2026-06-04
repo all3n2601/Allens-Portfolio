@@ -6,6 +6,11 @@ export type SocialLink = {
 
 export const site = {
   domain: 'https://shippedbyallen.com',
+  brandName: 'Shipped by Allen',
+  brandShort: 'Shipped',
+  brandByline: 'by Allen',
+  monogram: 'MA',
+  monogramHint: 'Mariaantony Alphonsa',
   fullName: 'Allen Febi Mariaantony Alphonsa',
   firstName: 'Allen',
   lastName: 'Febi',

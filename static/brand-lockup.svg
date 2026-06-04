@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" fill="none" role="img" aria-label="MA — Shipped by Allen">
+  <rect width="320" height="80" fill="#F5F2EB"/>
+  <rect x="8" y="8" width="64" height="64" stroke="#1A1712" stroke-width="1.5"/>
+  <rect x="16" y="58" width="48" height="4" fill="#C1391D"/>
+  <path fill="#1A1712" d="M14 54V18h3.5l8 14 8-14h3.5v36h-3.5V28l-7.5 12.5L18.5 28v26H14z"/>
+  <path fill="#1A1712" d="M36 54l4.5-18h3l4.5 18h-3.2l-1-3.5h-6.5l-1 3.5H36zm2.8-6.8h4.8L40.8 32l-2 15.2z"/>
+  <rect x="36.5" y="37" width="10.2" height="2.5" fill="#C1391D"/>
+  <text x="92" y="38" font-family="Georgia, 'Times New Roman', serif" font-size="28" font-style="italic" font-weight="700" fill="#1A1712">Shipped</text>
+  <text x="92" y="58" font-family="ui-monospace, monospace" font-size="11" letter-spacing="3" fill="#7A756A">BY ALLEN</text>
+  <text x="210" y="58" font-family="Georgia, serif" font-size="14" font-style="italic" fill="#C1391D">MA</text>
+</svg>
