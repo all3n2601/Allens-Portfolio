@@ -2,6 +2,7 @@
   import { onMount } from 'svelte';
   import { site } from '$lib/data/site';
   import { projects } from '$lib/data/projects';
+  import { shippedApps } from '$lib/data/shipped-apps';
   import { skillSections } from '$lib/data/skills';
   import { education, experiences, honors } from '$lib/data/resume';
 
@@ -35,6 +36,20 @@
     return `https://opengraph.githubassets.com/1/${normalized}`;
   }
 
+  function appStatusClass(status: (typeof shippedApps)[number]['status']) {
+    if (status === 'Live') return 'app-status-live';
+    if (status === 'Beta') return 'app-status-beta';
+    return 'app-status-soon';
+  }
+
+  function displayHost(url: string) {
+    try {
+      return new URL(url).hostname.replace(/^www\./, '');
+    } catch {
+      return url;
+    }
+  }
+
   onMount(() => {
     const io = new IntersectionObserver(
       (entries) => {
@@ -54,8 +69,9 @@
 
 <!-- NAV -->
 <nav>
-  <a class="nav-wordmark" href="#hero">{site.firstName} {site.lastName}</a>
+  <a class="nav-wordmark" href="#hero">Shipped by {site.firstName}</a>
   <ul class="nav-links">
+    <li><a href="#apps">Apps</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#projects">Projects</a></li>
@@ -74,14 +90,14 @@
       <em>{site.lastName}.</em>
     </h1>
     <p class="hero-desc">
-      Graduate student at <strong>Northeastern University</strong> building production systems across
-      <strong>backend infrastructure, AI pipelines, and mobile experiences</strong>. Currently at
-      <strong>SharkNinja</strong> (Summer 2026), selected after winning <strong>SharkNinja JailBreak Edu</strong>. Open to co-ops starting Jan 2027.
+      Product studio and portfolio for apps I ship to production — from
+      <strong>backend infrastructure and AI pipelines</strong> to <strong>mobile experiences</strong>.
+      Graduate student at <strong>Northeastern University</strong>, incoming at <strong>SharkNinja</strong> (Summer 2026).
     </p>
     <div class="hero-btns">
-      <a class="btn-filled" href="#projects">View Work</a>
+      <a class="btn-filled" href="#apps">Shipped Apps</a>
+      <a class="btn-ghost" href="#projects">View Work</a>
       <a class="btn-ghost" href="#contact">Say Hello</a>
-      <a class="btn-ghost" href="https://foodalertgo.com" target="_blank" rel="noreferrer">Live Site ↗</a>
     </div>
   </div>
 
@@ -105,11 +121,62 @@
 
 <div class="sep"></div>
 
+<!-- SHIPPED APPS -->
+<section id="apps">
+  <div class="section-wrap">
+    <div class="ruled-header">
+      <span class="section-num">01</span>
+      <h2 class="section-heading">Shipped <em>Apps</em></h2>
+    </div>
+
+    <p class="apps-intro reveal">
+      Products shipping under <strong>shippedbyallen.com</strong> — each on its own subdomain, deployed independently.
+    </p>
+
+    <div class="apps-grid">
+      {#each shippedApps as app (app.slug)}
+        <article class="app-card reveal {app.url ? 'is-live' : 'is-soon'}">
+          <div class="app-card-top">
+            <div class="app-icon" aria-hidden="true">
+              <i class={app.icon}></i>
+            </div>
+            <span class="app-status {appStatusClass(app.status)}">{app.status}</span>
+          </div>
+
+          <h3 class="app-name">{app.name}</h3>
+          <p class="app-tagline">{app.tagline}</p>
+
+          <div class="app-platforms">
+            {#each app.platforms as platform}
+              <span class="app-platform">{platform}</span>
+            {/each}
+          </div>
+
+          <div class="app-footer">
+            {#if app.url}
+              <a class="app-link" href={app.url} target="_blank" rel="noreferrer">
+                {displayHost(app.url)} ↗
+              </a>
+            {:else if app.plannedUrl}
+              <span class="app-planned">{displayHost(app.plannedUrl)}</span>
+            {/if}
+            {#if app.projectSlug}
+              <a class="app-case-study" href="#projects">Case study</a>
+            {/if}
+          </div>
+        </article>
+      {/each}
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
 <!-- ABOUT -->
 <section id="about">
   <div class="section-wrap">
     <div class="ruled-header">
-      <span class="section-num">01</span>
+      <span class="section-num">02</span>
       <h2 class="section-heading">About <em>Me</em></h2>
     </div>
 
@@ -157,7 +224,7 @@
 <section id="skills">
   <div class="section-wrap">
     <div class="ruled-header">
-      <span class="section-num">02</span>
+      <span class="section-num">03</span>
       <h2 class="section-heading">Technical <em>Skills</em></h2>
     </div>
 
@@ -182,7 +249,7 @@
 <section id="experience">
   <div class="section-wrap">
     <div class="ruled-header">
-      <span class="section-num">03</span>
+      <span class="section-num">04</span>
       <h2 class="section-heading">Work <em>Experience</em></h2>
     </div>
 
@@ -214,7 +281,7 @@
 <section id="projects">
   <div class="section-wrap">
     <div class="ruled-header">
-      <span class="section-num">04</span>
+      <span class="section-num">05</span>
       <h2 class="section-heading">Selected <em>Projects</em></h2>
     </div>
 
@@ -292,7 +359,7 @@
 <section id="education">
   <div class="section-wrap">
     <div class="ruled-header">
-      <span class="section-num">05</span>
+      <span class="section-num">06</span>
       <h2 class="section-heading">Academic <em>Background</em></h2>
     </div>
 
@@ -319,7 +386,7 @@
 <section id="honors">
   <div class="section-wrap">
     <div class="ruled-header">
-      <span class="section-num">06</span>
+      <span class="section-num">07</span>
       <h2 class="section-heading">Honors &amp; <em>Publications</em></h2>
     </div>
 
@@ -712,9 +779,190 @@
     color: var(--red);
   }
 
+  /* ── SHIPPED APPS ── */
+  #apps {
+    background: var(--paper);
+  }
+
+  .apps-intro {
+    max-width: 640px;
+    font-size: 0.95rem;
+    color: var(--ink2);
+    line-height: 1.75;
+    margin: -1.5rem 0 2.5rem;
+  }
+
+  .apps-intro strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .apps-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    border: 1px solid var(--border);
+  }
+
+  .app-card:nth-child(2n) {
+    border-right: none;
+  }
+
+  .app-card:nth-last-child(-n + 2) {
+    border-bottom: none;
+  }
+
+  .app-card {
+    background: var(--paper);
+    padding: 2rem;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    transition: background 0.2s;
+    min-height: 260px;
+  }
+
+  .app-card.is-live:hover {
+    background: var(--paper2);
+  }
+
+  .app-card.is-soon {
+    background: var(--paper2);
+  }
+
+  .app-card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .app-icon {
+    width: 2.75rem;
+    height: 2.75rem;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--border);
+    background: var(--paper);
+    color: var(--red);
+    font-size: 1.1rem;
+  }
+
+  .app-status {
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.55rem;
+    border: 1px solid var(--border);
+    white-space: nowrap;
+  }
+
+  .app-status-live {
+    background: #e8f5ec;
+    color: #1f6b38;
+    border-color: rgba(31, 107, 56, 0.25);
+  }
+
+  .app-status-beta {
+    background: var(--gold-pale);
+    color: var(--gold);
+    border-color: rgba(160, 124, 42, 0.25);
+  }
+
+  .app-status-soon {
+    background: var(--paper);
+    color: var(--ink3);
+  }
+
+  .app-name {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 1.45rem;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+  }
+
+  .app-tagline {
+    font-size: 0.88rem;
+    color: var(--ink2);
+    line-height: 1.65;
+    flex: 1;
+  }
+
+  .app-platforms {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  .app-platform {
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.55rem;
+    border: 1px solid var(--border);
+    color: var(--ink3);
+    background: var(--paper);
+  }
+
+  .app-card.is-soon .app-platform {
+    background: var(--paper);
+  }
+
+  .app-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding-top: 0.85rem;
+    border-top: 1px solid var(--border);
+    margin-top: auto;
+    flex-wrap: wrap;
+  }
+
+  .app-link {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--blue);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .app-link:hover {
+    color: var(--red);
+  }
+
+  .app-planned {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.06em;
+    color: var(--ink4);
+  }
+
+  .app-case-study {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink3);
+    text-decoration: none;
+    margin-left: auto;
+  }
+
+  .app-case-study:hover {
+    color: var(--red);
+  }
+
   /* ── ABOUT ── */
   #about {
-    background: var(--paper);
+    background: var(--paper2);
   }
 
   .about-layout {
@@ -788,7 +1036,7 @@
 
   /* ── SKILLS ── */
   #skills {
-    background: var(--paper2);
+    background: var(--paper);
   }
 
   .skills-magazine {
@@ -844,7 +1092,7 @@
 
   /* ── EXPERIENCE ── */
   #experience {
-    background: var(--paper);
+    background: var(--paper2);
   }
 
   .exp-entry {
@@ -926,7 +1174,7 @@
 
   /* ── PROJECTS ── */
   #projects {
-    background: var(--paper2);
+    background: var(--paper);
   }
 
   .projects-masonry {
@@ -1416,6 +1664,21 @@
     .hero-left {
       padding: 6rem 1.5rem 4rem;
       border-right: none;
+    }
+    .apps-grid {
+      grid-template-columns: 1fr;
+    }
+    .app-card {
+      border-right: none;
+    }
+    .app-card:nth-child(2n) {
+      border-right: none;
+    }
+    .app-card:nth-last-child(-n + 2) {
+      border-bottom: 1px solid var(--border);
+    }
+    .app-card:last-child {
+      border-bottom: none;
     }
     .about-layout {
       grid-template-columns: 1fr;
