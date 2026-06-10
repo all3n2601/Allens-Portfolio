@@ -8,6 +8,8 @@ export type ShippedApp = {
   icon: string;
   status: AppDeployStatus;
   platforms: AppPlatform[];
+  /** Internal route for a portfolio detail page */
+  detailHref?: string;
   /** Public URL when live; omit for coming-soon entries */
   url?: string;
   /** Planned subdomain shown for coming-soon apps */
@@ -34,6 +36,7 @@ export const shippedApps: ShippedApp[] = [
     icon: 'fa-solid fa-heart-pulse',
     status: 'Coming Soon',
     platforms: ['Web', 'iOS', 'Android'],
+    detailHref: '/apps/fasttime',
     plannedUrl: 'https://fasttime.shippedbyallen.com',
     projectSlug: 'fasttime'
   },
@@ -44,6 +47,7 @@ export const shippedApps: ShippedApp[] = [
     icon: 'fa-solid fa-terminal',
     status: 'Coming Soon',
     platforms: ['macOS'],
+    detailHref: '/apps/devbar',
     plannedUrl: 'https://devbar.shippedbyallen.com'
   },
   {
@@ -53,6 +57,7 @@ export const shippedApps: ShippedApp[] = [
     icon: 'fa-solid fa-folder-open',
     status: 'Coming Soon',
     platforms: ['macOS'],
+    detailHref: '/apps/drivelink',
     plannedUrl: 'https://drivelink.shippedbyallen.com'
   }
 ];

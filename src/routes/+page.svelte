@@ -6,6 +6,7 @@
   import { skillSections } from '$lib/data/skills';
   import { education, experiences, honors } from '$lib/data/resume';
   import BrandMark from '$lib/components/BrandMark.svelte';
+  import PixelPortrait from '$lib/components/PixelPortrait.svelte';
 
   const heroStats = [
     { num: '3+', label: 'Years Building' },
@@ -37,10 +38,22 @@
     return `https://opengraph.githubassets.com/1/${normalized}`;
   }
 
+  function projectPreviewSrc(project: (typeof projects)[number]) {
+    return project.image ?? githubPreviewUrl(project.githubRepo);
+  }
+
+  function projectPreviewAlt(project: (typeof projects)[number]) {
+    return project.imageAlt ?? `${project.title} project preview`;
+  }
+
   function appStatusClass(status: (typeof shippedApps)[number]['status']) {
     if (status === 'Live') return 'app-status-live';
     if (status === 'Beta') return 'app-status-beta';
     return 'app-status-soon';
+  }
+
+  function appPrimaryHref(app: (typeof shippedApps)[number]) {
+    return app.detailHref ?? app.url ?? app.plannedUrl ?? null;
   }
 
   function displayHost(url: string) {
@@ -102,7 +115,7 @@
     <p class="hero-desc">
       Product studio and portfolio for apps I ship to production — from
       <strong>backend infrastructure and AI pipelines</strong> to <strong>mobile experiences</strong>.
-      Graduate student at <strong>Northeastern University</strong>, incoming at <strong>SharkNinja</strong> (Summer 2026).
+      Graduate student at <strong>Northeastern University</strong> with secured experience at <strong>SharkNinja</strong> through JailBreak Edu.
     </p>
     <div class="hero-btns">
       <a class="btn-filled" href="#apps">Shipped Apps</a>
@@ -112,6 +125,7 @@
   </div>
 
   <div class="hero-right">
+    <PixelPortrait />
     <div class="hero-right-content">
       <div class="hero-stat-row">
         {#each heroStats as s}
@@ -123,7 +137,7 @@
       </div>
       <div class="hero-availability">
         <span class="avail-dot"></span>
-        Available for Summer 2026 internships &amp; co-ops
+        Recruiting for Jan 2027 co-ops &amp; Dec 2027 full-time roles
       </div>
     </div>
   </div>
@@ -153,7 +167,20 @@
             <span class="app-status {appStatusClass(app.status)}">{app.status}</span>
           </div>
 
-          <h3 class="app-name">{app.name}</h3>
+          <h3 class="app-name">
+            {#if appPrimaryHref(app)}
+              <a
+                class="app-name-link"
+                href={appPrimaryHref(app) ?? undefined}
+                target={app.detailHref ? undefined : '_blank'}
+                rel={app.detailHref ? undefined : 'noreferrer'}
+              >
+                {app.name}
+              </a>
+            {:else}
+              {app.name}
+            {/if}
+          </h3>
           <p class="app-tagline">{app.tagline}</p>
 
           <div class="app-platforms">
@@ -170,7 +197,9 @@
             {:else if app.plannedUrl}
               <span class="app-planned">{displayHost(app.plannedUrl)}</span>
             {/if}
-            {#if app.projectSlug}
+            {#if app.detailHref}
+              <a class="app-case-study" href={app.detailHref}>Open details</a>
+            {:else if app.projectSlug}
               <a class="app-case-study" href="#projects">Case study</a>
             {/if}
           </div>
@@ -201,8 +230,8 @@
         </p>
         <p>
           Currently a <strong>Graduate Research Assistant</strong> on the Food ALERT project, building donation lifecycle infrastructure and automated fraud
-          detection deployed at <a href="https://foodalertgo.com" target="_blank" rel="noreferrer" style="color:var(--red);">foodalertgo.com</a>. This summer I'm
-          at <strong>SharkNinja</strong> building VoC intelligence tooling after winning <strong>SharkNinja JailBreak Edu</strong>.
+          detection deployed at <a href="https://foodalertgo.com" target="_blank" rel="noreferrer" style="color:var(--red);">foodalertgo.com</a>. I also secured
+          <strong>SharkNinja</strong> experience building VoC intelligence tooling after winning <strong>SharkNinja JailBreak Edu</strong>.
         </p>
         <p>
           Before Northeastern, I spent a year as a <strong>Software Engineer at Siga Infotech</strong> shipping a production POS system for UK restaurant chains,
@@ -302,11 +331,11 @@
           <div class="proj-num">05</div>
           <div class="proj-name">{featured.title}</div>
           <div class="proj-subtitle">VoC Intelligence Platform · SharkNinja</div>
-          {#if githubPreviewUrl(featured.githubRepo)}
+          {#if projectPreviewSrc(featured)}
             <img
               class="proj-preview featured-preview"
-              src={githubPreviewUrl(featured.githubRepo)}
-              alt={`${featured.title} GitHub preview`}
+              src={projectPreviewSrc(featured) ?? undefined}
+              alt={projectPreviewAlt(featured)}
               loading="lazy"
               decoding="async"
             />
@@ -331,11 +360,11 @@
           <div class="proj-num">{String(i + 1).padStart(2, '0')}</div>
           <div class="proj-name">{p.title}</div>
           <div class="proj-subtitle">{p.highlights?.[0] ?? p.category}</div>
-          {#if githubPreviewUrl(p.githubRepo)}
+          {#if projectPreviewSrc(p)}
             <img
               class="proj-preview"
-              src={githubPreviewUrl(p.githubRepo)}
-              alt={`${p.title} GitHub preview`}
+              src={projectPreviewSrc(p) ?? undefined}
+              alt={projectPreviewAlt(p)}
               loading="lazy"
               decoding="async"
             />
@@ -435,7 +464,7 @@
           Let's<br />Make<br /><em>Something.</em>
         </h2>
         <p class="contact-sub">
-          Open to SWE co-ops (Jan 2027), full-time roles (Dec 2027), and interesting side projects. Best reached by email.
+          Recruiting for SWE co-ops in Jan 2027, full-time roles in Dec 2027, and a few high-conviction side projects. Best reached by email.
         </p>
       </div>
 
@@ -611,25 +640,6 @@
       linear-gradient(to top, rgba(245, 242, 235, 0.55), rgba(245, 242, 235, 0) 55%);
     pointer-events: none;
     z-index: 0;
-  }
-
-  .hero-right::before {
-    content: '';
-    position: absolute;
-    top: -2rem;
-    right: -1rem;
-    width: clamp(320px, 42vw, 560px);
-    height: clamp(320px, 42vw, 560px);
-    background-image: url('/images/allen-portrait-duotone.webp');
-    background-size: cover;
-    background-position: center;
-    border-radius: 999px;
-    opacity: 0.18;
-    filter: contrast(1.08) saturate(0.6);
-    mix-blend-mode: multiply;
-    pointer-events: none;
-    user-select: none;
-    transform: rotate(-6deg);
   }
 
   .hero-label {
@@ -936,6 +946,16 @@
     line-height: 1.1;
   }
 
+  .app-name-link {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .app-name-link:hover {
+    color: var(--red);
+  }
+
   .app-tagline {
     font-size: 0.88rem;
     color: var(--ink2);
@@ -1159,6 +1179,11 @@
 
   .exp-aside {
     padding-top: 0.4rem;
+  }
+
+  .exp-main {
+    display: grid;
+    gap: 1.2rem;
   }
 
   .exp-period {

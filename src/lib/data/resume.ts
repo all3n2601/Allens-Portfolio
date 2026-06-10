@@ -29,10 +29,9 @@ export const experiences: Experience[] = [
   {
     role: 'Applied AI & Analytics Intern',
     org: 'SharkNinja · Needham, MA',
-    period: 'Summer 2026',
-    current: true,
+    period: 'Secured via SharkNinja JailBreak Edu',
     bullets: [
-      "Won the SharkNinja JailBreak Edu hackathon and was selected for the Summer 2026 internship based on that win."
+      'Secured the opportunity by winning SharkNinja JailBreak Edu, positioning the work as earned industry experience rather than future availability copy.'
     ]
   },
   {
@@ -104,7 +103,7 @@ export const honors: Honor[] = [
     category: 'Hackathon',
     title: '3rd Place — SharkNinja JailBreak Edu',
     subtitle: 'HiFive (VoC Intelligence)',
-    venue: 'Summer 2026'
+    venue: 'SharkNinja'
   },
   {
     icon: '📄',
