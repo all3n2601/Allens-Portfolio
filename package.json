@@ -1,7 +1,7 @@
 {
-  "name": "allens-portfolio-v5",
+  "name": "allens-portfolio",
   "version": "1.0.0",
-  "description": "M A Allen Febi's Portfolio - Built with Svelte 5",
+  "description": "M A Allen Febi's Portfolio - Data engineering and analytics portfolio, built with SvelteKit",
   "type": "module",
   "scripts": {
     "dev": "vite dev",
@@ -12,30 +12,26 @@
   },
   "keywords": [
     "portfolio",
+    "data-engineering",
+    "analytics",
     "svelte",
-    "sveltekit",
-    "3d",
-    "modern"
+    "sveltekit"
   ],
   "author": "M A Allen Febi",
   "license": "MIT",
   "engines": {
     "node": ">=22.x"
   },
-  "dependencies": {
-    "@threlte/core": "^8.1.7",
-    "@threlte/extras": "^9.5.4",
-    "three": "^0.180.0"
-  },
   "devDependencies": {
     "@sveltejs/adapter-static": "^3.0.10",
     "@sveltejs/kit": "^2.46.4",
     "@sveltejs/vite-plugin-svelte": "^6.2.1",
-    "@types/three": "^0.180.0",
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.6",
     "svelte": "^5.39.11",
+    "svelte-check": "^4.7.8",
     "tailwindcss": "^3.4.18",
+    "typescript": "^6.0.3",
     "vite": "^6.3.6"
   }
 }
