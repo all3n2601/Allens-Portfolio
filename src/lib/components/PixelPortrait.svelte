@@ -33,9 +33,9 @@
   const finalHoldTime = assembleDuration + settleDuration;
   const portraitZones = {
     face: {
-      label: 'Builder',
-      title: 'Production-focused engineering',
-      body: 'Systems, APIs, and shipped apps with clarity first.',
+      label: 'Data',
+      title: 'Reliable data, useful analytics',
+      body: 'SQL transformations, data quality, and pipelines built for production.',
       href: '#experience',
       cta: 'View experience'
     },
@@ -47,11 +47,11 @@
       cta: 'Read background'
     },
     lower: {
-      label: 'Apps',
-      title: 'Cross-platform product building',
-      body: 'Mobile, web, and polished end-to-end product execution.',
-      href: '#apps',
-      cta: 'See shipped apps'
+      label: 'Pipelines',
+      title: 'Data engineering in practice',
+      body: 'Consumer analytics in Snowflake and transit lakehouse workflows in PySpark.',
+      href: '#data-work',
+      cta: 'Explore data work'
     }
   } as const;
 
@@ -437,7 +437,7 @@
   .portrait-panel-kicker,
   .portrait-panel-link {
     font-family: var(--mono);
-    font-size: 0.58rem;
+    font-size: 0.75rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
   }
@@ -447,15 +447,15 @@
     left: 1.25rem;
     top: 1.25rem;
     max-width: 16rem;
-    color: rgba(61, 58, 52, 0.84);
-    background: rgba(245, 242, 235, 0.76);
-    border: 1px solid rgba(216, 210, 198, 0.8);
+    color: rgba(58, 66, 76, 0.9);
+    background: rgba(244, 246, 248, 0.82);
+    border: 1px solid rgba(208, 214, 222, 0.9);
     padding: 0.8rem 0.9rem 0.85rem;
     backdrop-filter: blur(10px);
   }
 
   .portrait-panel-kicker {
-    color: rgba(61, 58, 52, 0.62);
+    color: rgba(107, 115, 128, 0.9);
     margin-bottom: 0.45rem;
   }
 
@@ -470,7 +470,7 @@
   .portrait-panel-body {
     font-size: 0.82rem;
     line-height: 1.55;
-    color: rgba(61, 58, 52, 0.82);
+    color: rgba(58, 66, 76, 0.88);
     max-width: 18rem;
   }
 
@@ -479,13 +479,14 @@
     display: inline-block;
     text-decoration: none;
     color: var(--ink);
-    border-bottom: 1px solid rgba(26, 23, 18, 0.26);
+    border-bottom: 1px solid rgba(18, 21, 26, 0.22);
     padding-bottom: 0.18rem;
     pointer-events: auto;
   }
 
   .portrait-panel-link:hover {
-    border-color: rgba(26, 23, 18, 0.68);
+    border-color: rgba(11, 110, 106, 0.7);
+    color: var(--accent);
   }
 
   @media (prefers-reduced-motion: reduce) {

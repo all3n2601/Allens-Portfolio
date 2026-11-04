@@ -42,12 +42,12 @@ const appDetails: Record<string, AppDetail> = {
     lede:
       'Built as a single product system: a Flutter client for end users, a Node API for commerce and sync, and a React dashboard for the web surface around the app.',
     statusNote:
-      'This product is mapped to a dedicated shippedbyallen deployment and already has linked project context in the portfolio.',
+      'Live at fasttime.shippedbyallen.com. Source lives at github.com/all3n2601/FastTime (mobile) with a companion backend/web monorepo.',
     metrics: [
       { label: 'Platforms', value: 'Web, iOS, Android' },
       { label: 'Product Shape', value: 'Flutter app, Node API, React dashboard' },
-      { label: 'Status', value: 'Coming Soon' },
-      { label: 'Portfolio Linkage', value: 'Project-backed case study' }
+      { label: 'Status', value: 'Live' },
+      { label: 'Site', value: 'fasttime.shippedbyallen.com' }
     ],
     pillars: [
       {
@@ -91,70 +91,131 @@ const appDetails: Record<string, AppDetail> = {
       'Rather than repeating the home-card summary, this page clarifies the actual product shape: mobile app in Flutter, backend services in Node, and a React dashboard that gives the app an operational surface on the web.'
     ],
     nextSteps: [
-      'Launch the dedicated subdomain at fasttime.shippedbyallen.com',
-      'Expand with production screenshots once the current UI is ready to publish',
-      'Link the detail page back into future FastTime case-study updates'
+      'Keep fasttime.shippedbyallen.com aligned with the latest mobile/web releases',
+      'Expand with more production screenshots as the UI ships',
+      'Open-source or document the monorepo structure when the FastTime GitHub repos go public'
     ]
   },
   devbar: {
     slug: 'devbar',
     eyebrow: 'Developer Utility',
-    headline: 'DevBar is a desktop command surface for day-to-day simulator and emulator workflows.',
+    headline: 'DevBar puts simulators and emulators in the macOS menu bar — plus CLI and MCP for agents.',
     lede:
-      'Positioned as a macOS menu bar tool, DevBar turns repetitive environment actions into a compact desktop utility instead of another full-window app.',
+      'Boot a simulator, install your latest build, capture a screenshot, or replay a GPS route without switching development tools. The same device operations are available from the terminal or an AI agent through MCP.',
     statusNote:
-      'The shipped apps data already places DevBar under its own future subdomain, so this page gives it a concrete portfolio destination before the public release is live.',
+      'Public beta on GitHub (macOS 14+, Apple Silicon and Intel, Swift). Releases ship the menu-bar app ZIP, a standalone CLI archive, and checksums.',
     metrics: [
-      { label: 'Platform', value: 'macOS' },
-      { label: 'Product Type', value: 'Menu bar command deck' },
-      { label: 'Audience', value: 'Developers working across mobile runtimes' },
-      { label: 'Status', value: 'Coming Soon' }
+      { label: 'Platform', value: 'macOS 14+' },
+      { label: 'Product Type', value: 'Menu bar + CLI + MCP' },
+      { label: 'Audience', value: 'Mobile developers' },
+      { label: 'Status', value: 'Public beta' }
     ],
     pillars: [
       {
-        title: 'Low-friction access',
+        title: 'Menu bar command deck',
         body:
-          'DevBar is centered on reducing context switching by putting common simulator and emulator workflows in the menu bar where they stay one click away.'
+          'DevBar keeps iOS Simulator and Android emulator controls one click away — boot, install, screenshot, and GPS routes without leaving your flow.'
       },
       {
-        title: 'Tooling-first UX',
+        title: 'CLI and MCP',
         body:
-          'The product framing is intentionally utilitarian: fast access, predictable actions, and a desktop surface that supports engineering flow rather than competing with it.'
+          'The same operations work from a standalone CLI and through MCP so AI agents can drive device workflows alongside the GUI.'
       },
       {
-        title: 'Portfolio fit',
+        title: 'Native Swift tooling',
         body:
-          'It broadens the shipped apps section beyond client products and shows Allen building internal-style utilities with the same attention to product clarity.'
+          'Built in Swift with no third-party runtime dependencies, targeting both Apple Silicon and Intel under macOS 14+.'
       }
     ],
     surfaces: [
       {
-        title: 'Product framing',
+        title: 'What ships with it',
         items: [
-          'Lives in the macOS menu bar instead of a traditional dashboard',
-          'Targets simulator and emulator-heavy workflows',
-          'Designed as a compact command deck rather than a general IDE plugin'
+          'Universal macOS menu-bar app from GitHub Releases',
+          'Standalone CLI archive for PATH installs',
+          'MCP bridge for agent-driven device operations'
         ]
       },
       {
-        title: 'Release shape',
+        title: 'Why it matters',
         items: [
-          'Standalone shippedbyallen app destination',
-          'Mac-first positioning in the portfolio',
-          'Ready to evolve into a fuller developer tooling story later'
+          'Cuts context switching across simulator/emulator tooling',
+          'Shows shipping of developer utilities with release hygiene (checksums, CI)',
+          'Extends the portfolio beyond consumer apps into engineering tooling'
         ]
       }
     ],
-    stackLabel: 'Product focus',
-    stack: ['macOS', 'Menu Bar Utility', 'Developer Workflow', 'Simulator Tooling'],
+    stackLabel: 'Core stack',
+    stack: ['Swift', 'SwiftUI', 'macOS', 'CLI', 'MCP', 'iOS Simulator', 'Android Emulator'],
     narrative: [
-      'DevBar arrives in the portfolio as a product with a sharply defined job: tighten the loop around simulator and emulator control. Even with a concise data record, the product direction is already specific enough to deserve its own destination.',
-      'This page keeps the language concrete and restrained, staying close to the existing shipped-app tagline while giving the app a stronger identity than a simple “coming soon” card can provide.'
+      'DevBar is framed around a sharp job: tighten the loop around simulator and emulator control. The public README positions it as a menu-bar companion with matching CLI and MCP surfaces.',
+      'Beta downloads are ad-hoc signed; the project documents Gatekeeper steps and ships SHA256 checksums with each release.'
     ],
     nextSteps: [
-      'Publish the first public DevBar release notes on the app subdomain',
-      'Add visual captures of the menu bar interaction model',
-      'Connect future project notes if the app grows into a larger tooling suite'
+      'Notarize / Developer ID sign production builds',
+      'Keep GitHub Releases current with changelog + checksums',
+      'Add more visual captures of the live menu-bar interaction model'
+    ]
+  },
+  narratify: {
+    slug: 'narratify',
+    eyebrow: 'Reading Platform',
+    headline: 'Narratify is an offline-first ebook reader and listening companion for Android and iOS.',
+    lede:
+      'Import your own books, pick up where you left off, or search open catalogs. Readium rendering, local audiobooks, and on-device narration keep reading and listening private — without sending book text to a cloud speech service.',
+    statusNote:
+      'Released on GitHub (v0.1.0). Download builds from Releases; Android and iOS feature coverage still differs by platform.',
+    metrics: [
+      { label: 'Platforms', value: 'Android 8.0+, iOS 17+' },
+      { label: 'Product Type', value: 'Native ebook + audio companion' },
+      { label: 'Privacy', value: 'Offline voices, private app storage' },
+      { label: 'Status', value: 'Released · v0.1.0' }
+    ],
+    pillars: [
+      {
+        title: 'Bring your own library',
+        body:
+          'Import unencrypted EPUB, TXT, and Markdown files with reading positions saved across launches. Files stay in private app storage.'
+      },
+      {
+        title: 'Read and listen',
+        body:
+          'Native Readium EPUB rendering, chapter navigation, offline system text-to-speech with highlight-as-you-go narration, plus local MP3/M4A/M4B audiobook playback on Android.'
+      },
+      {
+        title: 'Discover open catalogs',
+        body:
+          'One search across Project Gutenberg, Open Library, Google Books, Internet Archive, and LibriVox — merged and ranked by title and author relevance.'
+      }
+    ],
+    surfaces: [
+      {
+        title: 'What ships with it',
+        items: [
+          'Kotlin Android client and SwiftUI iOS client',
+          'Readium-based EPUB reading with offline TTS',
+          'Multi-catalog discovery with local import workflows'
+        ]
+      },
+      {
+        title: 'Why it matters',
+        items: [
+          'Shows offline-first product thinking with real privacy constraints',
+          'Spans two native mobile stacks with shared product intent',
+          'Connects reading, listening, and open-library discovery in one companion'
+        ]
+      }
+    ],
+    stackLabel: 'Core stack',
+    stack: ['Kotlin', 'SwiftUI', 'Readium', 'TTS', 'Android', 'iOS', 'Offline-first'],
+    narrative: [
+      'Narratify’s public README frames a clear promise: your books, your voice, your pace — without cloud speech for narration.',
+      'The v0.1.0 GitHub release packages the native clients so people can try the product while platform feature parity continues to tighten.'
+    ],
+    nextSteps: [
+      'Close platform feature parity between Android and iOS',
+      'Publish TestFlight / Play tracks when store-ready',
+      'Keep GitHub Releases current with screenshots and install notes'
     ]
   },
   drivelink: {
