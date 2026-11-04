@@ -6,6 +6,7 @@
   let { data }: { data: PageData } = $props();
 
   const { app, detail, project } = data;
+  const pageUrl = `${site.domain}/apps/${app.slug}`;
 
   function displayHost(url: string) {
     try {
@@ -19,9 +20,24 @@
 <svelte:head>
   <title>{app.name} • Shipped by Allen</title>
   <meta name="description" content={detail.lede} />
+  <link rel="canonical" href={pageUrl} />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content={site.brandName} />
+  <meta property="og:title" content={`${app.name} • ${site.brandName}`} />
+  <meta property="og:description" content={detail.lede} />
+  <meta property="og:url" content={pageUrl} />
+  <meta property="og:image" content={`${site.domain}/og-card.png`} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={`${app.name} • ${site.brandName}`} />
+  <meta name="twitter:description" content={detail.lede} />
+  <meta name="twitter:image" content={`${site.domain}/og-card.png`} />
 </svelte:head>
 
-<nav class="detail-nav">
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<nav class="detail-nav" aria-label="Primary">
   <a class="nav-brand" href="/">
     <BrandMark size={34} />
     <span class="nav-brand-text">
@@ -36,7 +52,7 @@
   </div>
 </nav>
 
-<main class="detail-page">
+<main class="detail-page" id="main">
   <section class="detail-hero">
     <div class="detail-hero-copy">
       <p class="detail-eyebrow">{detail.eyebrow}</p>
@@ -59,7 +75,13 @@
     <aside class="detail-summary">
       <div class="summary-card">
         <div class="summary-top">
-          <div class="summary-icon"><i class={app.icon}></i></div>
+          <div class="summary-icon" class:has-logo={Boolean(app.logo)}>
+            {#if app.logo}
+              <img src={app.logo} alt="{app.name} logo" />
+            {:else}
+              <i class={app.icon}></i>
+            {/if}
+          </div>
           <span class="summary-status">{app.status}</span>
         </div>
         <p class="summary-tagline">{app.tagline}</p>
@@ -178,7 +200,7 @@
     padding: 1rem 2rem;
     border-bottom: 1px solid var(--border);
     background:
-      linear-gradient(180deg, rgba(245, 242, 235, 0.96), rgba(245, 242, 235, 0.92));
+      linear-gradient(180deg, rgba(244, 246, 248, 0.96), rgba(244, 246, 248, 0.92));
     backdrop-filter: blur(12px);
   }
 
@@ -205,7 +227,7 @@
 
   .nav-brand-by {
     font-family: var(--mono);
-    font-size: 0.62rem;
+    font-size: 0.75rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--ink4);
@@ -221,7 +243,7 @@
 
   .detail-nav-links a {
     font-family: var(--mono);
-    font-size: 0.68rem;
+    font-size: 0.75rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--ink3);
@@ -260,7 +282,7 @@
   }
 
   .detail-eyebrow {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     color: var(--red);
     margin-bottom: 1rem;
   }
@@ -306,7 +328,7 @@
     border: 1px solid var(--ink);
     text-decoration: none;
     font-family: var(--mono);
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     transition: background 0.2s, color 0.2s, border-color 0.2s;
@@ -361,18 +383,32 @@
   }
 
   .summary-icon {
-    width: 3rem;
-    height: 3rem;
+    width: 3.5rem;
+    height: 3.5rem;
     display: grid;
     place-items: center;
     border: 1px solid var(--border);
-    color: var(--red);
+    color: var(--accent);
     font-size: 1.2rem;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .summary-icon.has-logo {
+    border: none;
+    background: transparent;
+  }
+
+  .summary-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
   }
 
   .summary-status {
     font-family: var(--mono);
-    font-size: 0.62rem;
+    font-size: 0.75rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     padding: 0.28rem 0.55rem;
@@ -416,7 +452,7 @@
   }
 
   .metric span {
-    font-size: 0.62rem;
+    font-size: 0.75rem;
     color: var(--ink4);
   }
 
@@ -453,7 +489,7 @@
 
   .section-num {
     font-family: var(--mono);
-    font-size: 0.65rem;
+    font-size: 0.75rem;
     letter-spacing: 0.14em;
     color: var(--ink4);
   }
@@ -545,7 +581,7 @@
   }
 
   .stack-head {
-    font-size: 0.62rem;
+    font-size: 0.75rem;
     color: var(--red);
     margin-bottom: 1rem;
   }
@@ -562,7 +598,7 @@
     background: var(--paper2);
     padding: 0.28rem 0.6rem;
     font-family: var(--mono);
-    font-size: 0.62rem;
+    font-size: 0.75rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--ink3);
@@ -576,7 +612,7 @@
   .project-context span {
     display: block;
     font-family: var(--mono);
-    font-size: 0.62rem;
+    font-size: 0.75rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--ink4);
@@ -589,7 +625,7 @@
 
   .next-step span {
     display: block;
-    font-size: 0.62rem;
+    font-size: 0.75rem;
     color: var(--red);
     margin-bottom: 0.75rem;
   }
