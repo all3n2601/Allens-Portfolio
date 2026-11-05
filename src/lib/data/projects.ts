@@ -369,3 +369,18 @@ export const projects: Project[] = [
     ]
   }
 ];
+
+function githubPreviewUrl(repo?: string) {
+  if (!repo) return null;
+  const normalized = repo.replace(/^https?:\/\/github\.com\//, '').replace(/\/+$/, '');
+  if (!/^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/.test(normalized)) return null;
+  return `https://opengraph.githubassets.com/1/${normalized}`;
+}
+
+export function projectPreviewSrc(project: Project) {
+  return project.image ?? githubPreviewUrl(project.githubRepo);
+}
+
+export function projectPreviewAlt(project: Project) {
+  return project.imageAlt ?? `${project.title} project preview`;
+}

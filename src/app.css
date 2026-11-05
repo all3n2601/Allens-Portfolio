@@ -1,6 +1,110 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* ── Reset (the parts of Tailwind's Preflight this site relies on) ── */
+*,
+::before,
+::after {
+    box-sizing: border-box;
+    border: 0 solid currentColor;
+}
+
+html {
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+    tab-size: 4;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    margin: 0;
+    line-height: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+blockquote, dl, dd, h1, h2, h3, h4, h5, h6, hr, figure, p, pre, fieldset {
+    margin: 0;
+}
+
+ol, ul, menu, fieldset, legend, dialog {
+    padding: 0;
+}
+
+ol, ul, menu {
+    list-style: none;
+    margin: 0;
+}
+
+hr {
+    height: 0;
+    color: inherit;
+    border-top-width: 1px;
+}
+
+a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+b, strong {
+    font-weight: bolder;
+}
+
+code, kbd, samp, pre {
+    font-size: 1em;
+}
+
+small {
+    font-size: 80%;
+}
+
+table {
+    text-indent: 0;
+    border-color: inherit;
+    border-collapse: collapse;
+}
+
+button, input, optgroup, select, textarea {
+    font: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+button, select {
+    text-transform: none;
+}
+
+button, input:where([type='button'], [type='reset'], [type='submit']) {
+    -webkit-appearance: button;
+    background-color: transparent;
+    background-image: none;
+}
+
+button, [role='button'] {
+    cursor: pointer;
+}
+
+:disabled {
+    cursor: default;
+}
+
+img, svg, video, canvas, audio, iframe, embed, object {
+    display: block;
+    vertical-align: middle;
+}
+
+img, video {
+    max-width: 100%;
+    height: auto;
+}
+
+[hidden]:where(:not([hidden='until-found'])) {
+    display: none;
+}
+
 
 :root {
     /* Cool slate paper — not warm cream / terracotta */
@@ -113,4 +217,109 @@ body {
         from { opacity: 1; transform: none; }
         to { opacity: 1; transform: none; }
     }
+}
+
+/* ── Home page layout + project-card primitives shared by Data Work and Projects ── */
+
+.section-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 6rem 2.5rem;
+}
+
+@media (max-width: 900px) {
+  .section-wrap {
+    padding: 4rem 1.5rem;
+  }
+}
+.proj-num {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--ink4);
+  letter-spacing: 0.15em;
+}
+
+.proj-name {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+
+.proj-desc {
+  font-size: 0.85rem;
+  color: var(--ink2);
+  line-height: 1.7;
+  flex: 1;
+}
+
+.proj-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.proj-visual {
+  margin: 0;
+  border: 1px solid var(--border);
+  background: var(--paper2);
+}
+
+.proj-visual img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.proj-visual img.contain {
+  object-fit: contain;
+  padding: 1.4rem;
+}
+
+.proj-visual figcaption {
+  padding: 0.45rem 0.65rem;
+  border-top: 1px solid var(--border);
+  color: var(--ink3);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.tech-chip {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  padding: 0.2rem 0.55rem;
+  border: 1px solid var(--border);
+  color: var(--ink3);
+  background: var(--paper2);
+}
+
+.proj-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.8rem;
+  border-top: 1px solid var(--border);
+  margin-top: auto;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.proj-link {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--ink3);
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+
+.proj-link:hover {
+  color: var(--red);
 }
