@@ -5,6 +5,10 @@ export type SkillSection = {
 
 export const skillSections: SkillSection[] = [
   {
+    title: 'Data Engineering / Analytics',
+    skills: ['SQL / T-SQL', 'Snowflake', 'dbt', 'Snowflake Cortex', 'Airflow', 'Spark / PySpark', 'Apache Iceberg', 'Parquet', 'MinIO', 'Data Modeling', 'ETL / ELT', 'CDC', 'Data Quality']
+  },
+  {
     title: 'Languages',
     skills: ['Java', 'Python', 'JavaScript', 'TypeScript', 'SQL', 'Dart']
   },
@@ -22,7 +26,7 @@ export const skillSections: SkillSection[] = [
   },
   {
     title: 'DevOps & Tools',
-    skills: ['Docker', 'Git', 'AWS EC2/S3', 'CI/CD', 'Vercel', 'Linux', 'Jest', 'pytest']
+    skills: ['Docker', 'Git', 'AWS ECS / Fargate', 'RDS / PostGIS', 'S3 / Glue', 'CloudWatch', 'CI/CD', 'Vercel', 'Linux', 'Jest', 'pytest']
   },
   {
     title: 'AI / ML',

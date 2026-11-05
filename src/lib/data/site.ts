@@ -14,9 +14,9 @@ export const site = {
   fullName: 'Allen Febi Mariaantony Alphonsa',
   firstName: 'Allen',
   lastName: 'Febi',
-  role: 'Full-Stack Engineer',
+  role: 'Data Engineering & Analytics',
   tagline:
-    'Graduate student at Northeastern University building production systems across backend infrastructure, AI pipelines, and mobile experiences.',
+    'Northeastern graduate student building reliable data pipelines, SQL transformations, and analytics with Snowflake, dbt, Airflow, and PySpark.',
   location: 'Boston, MA',
   email: 'mariaantonyalphons.a@northeastern.edu',
   phoneDisplay: '(617) 606-8268',

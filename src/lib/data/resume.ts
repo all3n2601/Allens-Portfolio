@@ -1,9 +1,17 @@
+export type ExperienceLogo = {
+  src: string;
+  alt: string;
+};
+
 export type Experience = {
   role: string;
   org: string;
   location?: string;
   period: string;
   current?: boolean;
+  logo?: string;
+  logoAlt?: string;
+  logos?: ExperienceLogo[];
   bullets: string[];
 };
 
@@ -15,6 +23,8 @@ export type Education = {
   period: string;
   gpaBadge?: string;
   courses: string;
+  logo?: string;
+  logoAlt?: string;
 };
 
 export type Honor = {
@@ -29,37 +39,37 @@ export const experiences: Experience[] = [
   {
     role: 'Applied AI & Analytics Intern',
     org: 'SharkNinja · Needham, MA',
-    period: 'Secured via SharkNinja JailBreak Edu',
+    period: 'Jun 2026 — Aug 2026',
+    logo: '/images/logos/sharkninja.svg',
+    logoAlt: 'SharkNinja',
     bullets: [
-      'Secured the opportunity by winning SharkNinja JailBreak Edu, positioning the work as earned industry experience rather than future availability copy.'
+      'Built Snowflake/dbt transformations to parse, standardize, and validate 12+ survey formats. Added incremental loads, change-data capture, and soft-delete handling for reliable refreshes.',
+      'Engineered a multi-pass Snowflake Cortex thematic-analysis pipeline across 256M consumer-feedback rows and diagnosed a deduplication defect that silently dropped survey responses, restoring data completeness.',
+      'Automated cross-system Salesforce localization across 12 markets and OCR tagging for 10,000+ Cloudinary assets, reducing turnaround 60% and achieving 95% tagging accuracy.'
     ]
   },
   {
     role: 'Graduate Research Assistant',
-    org: 'Northeastern University · Food ALERT Project',
+    org: 'Northeastern University · FoodALERT Project · Boston, MA',
     period: 'Jan 2026 — Present',
+    current: true,
+    logos: [
+      { src: '/images/logos/damore-mckim.svg', alt: "D'Amore-McKim School of Business" }
+    ],
     bullets: [
-      'Designed normalized PostgreSQL schema with stored procedures for a 5-stage donation state machine; built RESTful FastAPI microservices deployed via CI/CD.',
-      'Built responsive Next.js interfaces across the donation lifecycle; achieved 80%+ test coverage with Jest and pytest across API and data layers.',
-      'Engineered rule-based fraud-detection scoring across 6 risk signals, reducing manual review queue size.'
+      'Owned Food ALERT’s full stack for a five-stage donation lifecycle, designing 15+ normalized PostgreSQL tables and stored procedures and building FastAPI services and Next.js workflows.',
+      'Built asynchronous risk scoring on six organization and donation signals, auto-flagging high-risk accounts and cutting manual review 60%.',
+      'Led the Hetzner-to-AWS migration, deploying FastAPI on ECS Fargate and designing the RDS PostgreSQL/PostGIS, ElastiCache, and S3/Glue data layer with backups and CloudWatch monitoring.'
     ]
   },
   {
-    role: 'Software Engineer',
+    role: 'Software Engineer, Part-Time',
     org: 'Siga Infotech · Trivandrum, India',
-    period: 'Sep 2024 — Jul 2025',
+    period: 'Apr 2024 — Jul 2025',
     bullets: [
-      'Delivered production POS system at 99.9% uptime across 2 UK chains; reduced order processing time by 40% and API response by 35% via T‑SQL optimization.',
-      'Built WebSocket order sync between front-of-house and kitchen displays; architected offline-first SQLite caching with 85% automated test coverage.'
-    ]
-  },
-  {
-    role: 'Application Developer Intern',
-    org: 'IIT Guwahati · Assam, India',
-    period: 'Jan 2023 — Apr 2023',
-    bullets: [
-      'Built EnergyP2P, a P2P solar energy trading app with 3 role-based Flutter clients; added AES-256 encryption on transactions.',
-      'Profiled across multiple devices and redesigned matchmaking cutting page load by 60% (800ms → 320ms).'
+      'Managed multi-tenant data for 4 UK retail chains on a shared SQL Server backend, isolating orders, menus, and payments by tenant key across 1,000+ daily transactions and tenant-level reporting.',
+      'Built pipelines moving order and payment data from the customer-facing (B2C) system into the backend. Rewrote slow T-SQL procedures and indexes, raising throughput from 150 to 250 orders/hour and cutting processing time 40%.',
+      'Built offline-first SQLite capture with conflict resolution on reconnect, preventing lost or duplicate orders through 4+ hour network outages while keeping 85% test coverage across 500+ tests.'
     ]
   }
 ];
@@ -70,8 +80,10 @@ export const education: Education[] = [
     degree: 'M.S. Computer Science',
     school: 'Northeastern University · Boston, MA',
     period: 'Aug. 2025 — Dec. 2027',
-    gpaBadge: 'GPA 3.58 / 4.0',
-    courses: 'Database Management Systems · Program Design Paradigms · Object-Oriented Software Design'
+    gpaBadge: 'GPA 3.66 / 4.0',
+    courses: 'Database Management Systems · Program Design Paradigms · Object-Oriented Software Design',
+    logo: '/images/logos/damore-mckim.svg',
+    logoAlt: "D'Amore-McKim School of Business"
   },
   {
     type: 'Undergraduate',

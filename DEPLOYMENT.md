@@ -24,8 +24,20 @@ That workflow:
 2. Uses Node 22
 3. Ensures the Cloudflare Pages project exists
 4. Runs `npm ci`
-5. Runs `npm run build`
-6. Publishes `build/` with Wrangler Pages deploy
+5. Runs `npm run check` (svelte-check)
+6. Runs `npm run build`
+7. Publishes `build/` with Wrangler Pages deploy
+
+## CI and Preview Deploys
+
+`.github/workflows/ci.yml` runs on every pull request and on pushes to any branch except `main`:
+
+1. `npm ci`, `npm run check`, `npm run build`
+2. For pull requests opened from this repo (not forks), publishes the build to a Cloudflare Pages preview at branch alias `pr-<number>` and comments the URL on the PR. The comment is updated on each push.
+
+Previews are public `*.pages.dev` URLs. Production only deploys from `main`.
+
+Consider enabling branch protection on `main` with the `check` job as a required status check.
 
 ## Required GitHub Secrets
 
@@ -50,8 +62,9 @@ If the site builds successfully, the output Cloudflare publishes is the static `
 
 ## Important Project Behavior
 
-- The site is prerendered static output.
-- `src/routes/+layout.js` sets `ssr = false` and `prerender = true`.
+- The site is prerendered static output (SSR at build time, so the HTML contains the page content).
+- `src/routes/+layout.js` sets `prerender = true`.
+- `sitemap.xml` is generated at build time by `src/routes/sitemap.xml/+server.ts`; `robots.txt` and `og-card.png` live in `static/`.
 - App detail routes under `/apps/[slug]` are prerendered through `entries()` in [src/routes/apps/[slug]/+page.ts](/Users/all3n2601/Desktop/Personal/Allens-Portfolio/src/routes/apps/[slug]/+page.ts).
 
 ## Cloudflare Pages Setup Notes
